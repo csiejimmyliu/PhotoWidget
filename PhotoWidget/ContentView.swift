@@ -1,61 +1,46 @@
-//
-//  ContentView.swift
-//  PhotoWidget
-//
-//  Created by 劉旭庭 on 2024/10/21.
-//
-
 import SwiftUI
-import SwiftData
+import WidgetKit
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @State private var images: [UIImage] = []
+    @State private var showingImagePicker = false
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+        VStack {
+            Text("Upload Photos for Widget")
+                .font(.largeTitle)
+                .padding()
+
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(images, id: \.self) { image in
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100, height: 100)
+                            .padding()
                     }
                 }
             }
-        } detail: {
-            Text("Select an item")
-        }
-    }
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+            Button("Add Photo") {
+                showingImagePicker = true
             }
+            .padding()
+            .sheet(isPresented: $showingImagePicker) {
+                ImagePicker(images: $images)
+            }
+
+            Button("Save to Widget") {
+                PhotoStore.shared.savePhotos(images)
+                
+                // Force widget to reload
+                WidgetCenter.shared.reloadAllTimelines()
+                
+                let savedImages = PhotoStore.shared.loadPhotos()
+                print("Images saved for widget count: \(savedImages.count)")
+            }
+            .padding()
         }
     }
-}
-
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }

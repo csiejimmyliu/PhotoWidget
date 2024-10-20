@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BF39A50F2CC5783F004DB681 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF39A50E2CC5783F004DB681 /* WidgetKit.framework */; };
+		BF39A5112CC5783F004DB681 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF39A5102CC5783F004DB681 /* SwiftUI.framework */; };
+		BF39A51C2CC57856004DB681 /* WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BF39A50C2CC5783F004DB681 /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		BF39A4EC2CC57811004DB681 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,17 +27,62 @@
 			remoteGlobalIDString = BF39A4D82CC5780D004DB681;
 			remoteInfo = PhotoWidget;
 		};
+		BF39A51A2CC57856004DB681 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF39A4D12CC5780C004DB681 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF39A50B2CC5783F004DB681;
+			remoteInfo = WidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BF39A5212CC57856004DB681 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BF39A51C2CC57856004DB681 /* WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BF39A4D92CC5780D004DB681 /* PhotoWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF39A4EB2CC57811004DB681 /* PhotoWidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoWidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF39A4F52CC57811004DB681 /* PhotoWidgetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoWidgetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF39A50C2CC5783F004DB681 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF39A50E2CC5783F004DB681 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		BF39A5102CC5783F004DB681 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		BF39A52B2CC57B9A004DB681 /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BF39A51D2CC57856004DB681 /* Exceptions for "Widget" folder in "WidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = BF39A50B2CC5783F004DB681 /* WidgetExtension */;
+		};
+		BF39A5292CC579B4004DB681 /* Exceptions for "PhotoWidget" folder in "WidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				PhotoStore.swift,
+			);
+			target = BF39A50B2CC5783F004DB681 /* WidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BF39A4DB2CC5780D004DB681 /* PhotoWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BF39A5292CC579B4004DB681 /* Exceptions for "PhotoWidget" folder in "WidgetExtension" target */,
+			);
 			path = PhotoWidget;
 			sourceTree = "<group>";
 		};
@@ -43,6 +94,14 @@
 		BF39A4F82CC57811004DB681 /* PhotoWidgetUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = PhotoWidgetUITests;
+			sourceTree = "<group>";
+		};
+		BF39A5122CC5783F004DB681 /* Widget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BF39A51D2CC57856004DB681 /* Exceptions for "Widget" folder in "WidgetExtension" target */,
+			);
+			path = Widget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,15 +128,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BF39A5092CC5783F004DB681 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF39A5112CC5783F004DB681 /* SwiftUI.framework in Frameworks */,
+				BF39A50F2CC5783F004DB681 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		BF39A4D02CC5780C004DB681 = {
 			isa = PBXGroup;
 			children = (
+				BF39A52B2CC57B9A004DB681 /* WidgetExtension.entitlements */,
 				BF39A4DB2CC5780D004DB681 /* PhotoWidget */,
 				BF39A4EE2CC57811004DB681 /* PhotoWidgetTests */,
 				BF39A4F82CC57811004DB681 /* PhotoWidgetUITests */,
+				BF39A5122CC5783F004DB681 /* Widget */,
+				BF39A50D2CC5783F004DB681 /* Frameworks */,
 				BF39A4DA2CC5780D004DB681 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +159,18 @@
 				BF39A4D92CC5780D004DB681 /* PhotoWidget.app */,
 				BF39A4EB2CC57811004DB681 /* PhotoWidgetTests.xctest */,
 				BF39A4F52CC57811004DB681 /* PhotoWidgetUITests.xctest */,
+				BF39A50C2CC5783F004DB681 /* WidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BF39A50D2CC5783F004DB681 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF39A50E2CC5783F004DB681 /* WidgetKit.framework */,
+				BF39A5102CC5783F004DB681 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,10 +183,12 @@
 				BF39A4D52CC5780D004DB681 /* Sources */,
 				BF39A4D62CC5780D004DB681 /* Frameworks */,
 				BF39A4D72CC5780D004DB681 /* Resources */,
+				BF39A5212CC57856004DB681 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BF39A51B2CC57856004DB681 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				BF39A4DB2CC5780D004DB681 /* PhotoWidget */,
@@ -163,6 +246,28 @@
 			productReference = BF39A4F52CC57811004DB681 /* PhotoWidgetUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		BF39A50B2CC5783F004DB681 /* WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF39A51E2CC57856004DB681 /* Build configuration list for PBXNativeTarget "WidgetExtension" */;
+			buildPhases = (
+				BF39A5082CC5783F004DB681 /* Sources */,
+				BF39A5092CC5783F004DB681 /* Frameworks */,
+				BF39A50A2CC5783F004DB681 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				BF39A5122CC5783F004DB681 /* Widget */,
+			);
+			name = WidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = WidgetExtension;
+			productReference = BF39A50C2CC5783F004DB681 /* WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +289,9 @@
 						CreatedOnToolsVersion = 16.0;
 						TestTargetID = BF39A4D82CC5780D004DB681;
 					};
+					BF39A50B2CC5783F004DB681 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 				};
 			};
 			buildConfigurationList = BF39A4D42CC5780C004DB681 /* Build configuration list for PBXProject "PhotoWidget" */;
@@ -203,6 +311,7 @@
 				BF39A4D82CC5780D004DB681 /* PhotoWidget */,
 				BF39A4EA2CC57811004DB681 /* PhotoWidgetTests */,
 				BF39A4F42CC57811004DB681 /* PhotoWidgetUITests */,
+				BF39A50B2CC5783F004DB681 /* WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +332,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BF39A4F32CC57811004DB681 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF39A50A2CC5783F004DB681 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +369,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BF39A5082CC5783F004DB681 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +388,11 @@
 			isa = PBXTargetDependency;
 			target = BF39A4D82CC5780D004DB681 /* PhotoWidget */;
 			targetProxy = BF39A4F62CC57811004DB681 /* PBXContainerItemProxy */;
+		};
+		BF39A51B2CC57856004DB681 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF39A50B2CC5783F004DB681 /* WidgetExtension */;
+			targetProxy = BF39A51A2CC57856004DB681 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -393,17 +521,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PhotoWidget/PhotoWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PhotoWidget/Preview Content\"";
 				DEVELOPMENT_TEAM = 62QTRFNKCW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_WKExtensionDelegateClassName = "$(PRODUCT_MODULE_NAME).ExtensionDelegate";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,6 +544,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jimmy.PhotoWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -422,17 +559,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PhotoWidget/PhotoWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PhotoWidget/Preview Content\"";
 				DEVELOPMENT_TEAM = 62QTRFNKCW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_WKExtensionDelegateClassName = "$(PRODUCT_MODULE_NAME).ExtensionDelegate";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,6 +582,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jimmy.PhotoWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -518,6 +664,68 @@
 			};
 			name = Release;
 		};
+		BF39A51F2CC57856004DB681 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 62QTRFNKCW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widget;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
+				INFOPLIST_KEY_WKExtensionDelegateClassName = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jimmy.PhotoWidget.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BF39A5202CC57856004DB681 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 62QTRFNKCW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widget;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
+				INFOPLIST_KEY_WKExtensionDelegateClassName = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jimmy.PhotoWidget.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -553,6 +761,15 @@
 			buildConfigurations = (
 				BF39A5062CC57811004DB681 /* Debug */,
 				BF39A5072CC57811004DB681 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF39A51E2CC57856004DB681 /* Build configuration list for PBXNativeTarget "WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF39A51F2CC57856004DB681 /* Debug */,
+				BF39A5202CC57856004DB681 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
