@@ -9,7 +9,7 @@ struct PhotoWidgetEntry: TimelineEntry {
 
 // The provider for the timeline, responsible for managing widget updates
 struct PhotoWidgetProvider: TimelineProvider {
-    
+
     // Placeholder entry for preview in the widget gallery
     func placeholder(in context: Context) -> PhotoWidgetEntry {
         return PhotoWidgetEntry(date: Date(), image: nil)
@@ -29,18 +29,18 @@ struct PhotoWidgetProvider: TimelineProvider {
 
         // Ensure we have images to display
         if !images.isEmpty {
-            // Create an entry for each image, showing it for 1 second
-            for (index, image) in images.enumerated() {
-                let entryDate = Calendar.current.date(byAdding: .second, value: index, to: Date())!
-                let entry = PhotoWidgetEntry(date: entryDate, image: image)
-                entries.append(entry)
-            }
+            let startDate = Date()
 
-            // Repeat the sequence of images by looping through the images again
-            for (index, image) in images.enumerated() {
-                let entryDate = Calendar.current.date(byAdding: .second, value: index + images.count, to: Date())!
-                let entry = PhotoWidgetEntry(date: entryDate, image: image)
-                entries.append(entry)
+            // Loop through the images repeatedly and create enough entries to cover a longer period of time
+            var currentDate = startDate
+            for cycle in 0..<50 { // Repeat for a long enough period (e.g., 50 cycles)
+                for image in images {
+                    let entry = PhotoWidgetEntry(date: currentDate, image: image)
+                    entries.append(entry)
+
+                    // Move the current date by 3 seconds for each image
+                    currentDate = Calendar.current.date(byAdding: .second, value: 3, to: currentDate)!
+                }
             }
         } else {
             // If there are no images, add a single entry showing the "No photos available" text
@@ -48,8 +48,8 @@ struct PhotoWidgetProvider: TimelineProvider {
             entries.append(entry)
         }
 
-        // Create a timeline with the entries and repeat them after the last one
-        let timeline = Timeline(entries: entries, policy: .after(entries.last?.date ?? Date()))
+        // Create a timeline with the entries, and set the policy to reload at the end to repeat the sequence indefinitely
+        let timeline = Timeline(entries: entries, policy: .atEnd)  // Reloads after the timeline ends
         completion(timeline)
     }
 }
@@ -84,6 +84,6 @@ struct PhotoWidget: Widget {
             PhotoWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Photo Widget")
-        .description("This widget displays uploaded photos in rotation every second.")
+        .description("This widget displays uploaded photos in rotation every 3 seconds.")
     }
 }
